@@ -1,0 +1,212 @@
+/* Header.module.css */
+
+/* --- Layout chính --- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navWrapper {
+  display: flex;
+  justify-content: space-between; /* Giữ space-between để nút Bars nằm trái */
+  align-items: center;
+  height: 80px;
+  position: relative; /* MỚI: Cần thiết để căn giữa logo */
+}
+
+/* --- Logo --- */
+.logoWrapper {
+  flex-shrink: 0;
+  /* MỚI: Căn giữa tuyệt đối cho Mobile */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2563eb;
+  text-decoration: none;
+  display: block; /* Giúp click vào logo dễ hơn */
+}
+
+/* --- Desktop Menu --- */
+.desktopNav {
+  display: none;
+  gap: 1.5rem;
+}
+
+.navLink {
+  color: #374151;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.navLink:hover {
+  color: #2563eb;
+  background-color: #f3f4f6;
+}
+
+/* --- Auth Wrapper --- */
+.authWrapper {
+  display: none;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loginBtn {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: color 0.2s;
+}
+
+.loginBtn:hover {
+  color: #2563eb;
+  background-color: #f3f4f6;
+}
+
+.registerBtn {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #2563eb;
+  text-decoration: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.375rem; /* Thêm border radius cho đẹp */
+  transition: background-color 0.2s;
+}
+
+.registerBtn:hover {
+  background-color: #1d4ed8;
+}
+
+/* --- Mobile Button --- */
+.mobileBtnWrapper {
+  display: flex;
+  align-items: center;
+  z-index: 20; /* MỚI: Đảm bảo nút bars nằm trên layer của logo nếu màn hình quá nhỏ */
+}
+
+.mobileBtn {
+  display: flex;
+  border: none;
+  background: none;
+  color: #374151;
+  cursor: pointer;
+  padding: 0.5rem;
+  /* Reset padding left để icon sát lề trái hơn nếu muốn */
+  padding-left: 0; 
+}
+
+/* --- Mobile Menu Dropdown --- */
+.mobileMenu {
+  background-color: #ffffff;
+  border-top: 1px solid #f3f4f6;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  right: 0;
+  left: 0;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  top: 80px; /* Đảm bảo menu hiện ngay dưới header */
+  z-index: 40;
+}
+
+.mobileNavLink {
+  display: block;
+  color: #374151;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+}
+
+.mobileNavLink:hover {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+/* --- Mobile Auth Styles --- */
+.mobileAuthDivider {
+  height: 1px;
+  background-color: #e5e7eb;
+  margin: 0.5rem 0;
+}
+
+.mobileAuthWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobileLogin {
+  text-align: center;
+  border: 1px solid #e5e7eb;
+}
+
+.mobileRegister {
+  text-align: center;
+  background-color: #2563eb;
+  color: white !important;
+  border-radius: 0.375rem;
+}
+
+.mobileRegister:hover {
+  background-color: #1d4ed8;
+}
+
+/* --- MEDIA QUERIES --- */
+@media (min-width: 768px) {
+  .desktopNav {
+    display: flex; 
+  }
+
+  .authWrapper {
+    display: flex; 
+  }
+
+  .mobileBtnWrapper {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: none !important;
+  }
+  
+  /* Cập nhật lại cho Desktop */
+  .navWrapper {
+    display: flex;
+    justify-content: space-between; /* Căn đều 2 bên: (Logo+Menu) --- (Auth) */
+  }
+
+  /* MỚI: Reset Logo về trạng thái thường */
+  .logoWrapper {
+    position: static;
+    transform: none;
+    margin-right: auto; /* Mẹo: Đẩy Logo+Menu sang trái, Auth sang phải nếu muốn */
+  }
+}
