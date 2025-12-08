@@ -144,6 +144,10 @@
   text-decoration: none;
   margin-bottom: 0.25rem;
 }
+.navHot {
+  color: #ce0000;
+
+}
 
 .mobileNavLink:hover {
   background-color: #eff6ff;

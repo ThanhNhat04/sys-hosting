@@ -35,6 +35,7 @@
 .btnPrimary {
   composes: btn;
   background-color: var(--primary-color);
+  background-color: var(--primary-color);
   color: var(--white);
 }
 .btnPrimary:hover {
@@ -52,102 +53,248 @@
   color: var(--white);
 }
 
-/* --- 2. HEADER --- */
-
-/* --- 3. HERO SECTION --- */
+/* --- 3. HERO SECTION ---*/
 .heroHosting {
-  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-  padding: 140px 0 80px;
-  position: relative;
+  background-color: #f3f4f6; /* Màu nền xám nhẹ */
+  padding: 80px 0;
+  font-family: "Inter", sans-serif;
   overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .heroWrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+  gap: 50px;
 }
 
+/* --- Cột bên trái: Nội dung --- */
 .heroContent {
   flex: 1;
-  z-index: 2;
-}
-.heroContent h1 {
-  font-size: 2.8rem;
-  color: #1a237e;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 30px;
+  max-width: 550px;
 }
 
-.badgeNew {
-  background-color: #ff9800;
-  color: white;
-  font-size: 0.8rem;
-  padding: 3px 8px;
-  border-radius: 4px;
-  vertical-align: super;
-  position: relative;
-  top: -10px;
-}
-
-.heroFeatures {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px 30px;
-  margin-bottom: 40px;
-}
-.heroFeatures li {
-  font-size: 0.95rem;
+/* Badge trên cùng: We host more than... */
+.badgePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
   color: #333;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+}
+
+.badgePill i {
+  color: #333; /* Icon globe màu đen */
+}
+
+/* Tiêu đề H1 */
+.heroContent h1 {
+  font-size: 3.5rem; /* 56px */
+  font-weight: 800;
+  line-height: 1.1;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+/* Đoạn mô tả */
+.heroDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #64748b;
+  margin-bottom: 35px;
+  max-width: 90%;
+}
+
+/* Group Button */
+.btnGroup {
   display: flex;
   align-items: center;
-}
-.heroFeatures li i {
-  margin-right: 10px;
-  font-size: 1.1rem;
-  color: #333;
+  gap: 25px;
 }
 
-.btnRegister {
-  display: inline-block;
-  background-color: #1565c0;
-  color: white;
-  padding: 12px 40px;
-  border-radius: 30px;
+.btnPrimary {
+  background-color: var(--primary-color); 
+  color: #fff;
+  padding: 15px 32px;
+  border-radius: 50px;
   font-weight: 600;
-  box-shadow: 0 4px 15px rgba(21, 101, 192, 0.3);
-  transition: transform 0.2s;
-}
-.btnRegister:hover {
-  transform: translateY(-2px);
-  background-color: #0d47a1;
+  text-decoration: none;
+  transition: transform 0.2s, background-color 0.2s;
+  box-shadow: 0 10px 20px rgba(37, 157, 255, 0.2);
 }
 
+.btnPrimary:hover {
+  background-color: var(--primary-color2);
+  transform: translateY(-2px);
+}
+
+.btnTextLink {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.btnTextLink:hover {
+  text-decoration: underline;
+}
+
+/* --- Cột bên phải: Ảnh & Floating Boxes --- */
 .heroImage {
   flex: 1;
-  position: relative;
+  position: relative; /* Quan trọng để định vị con tuyệt đối */
   display: flex;
   justify-content: center;
-  align-items: center;
 }
-.heroImage::before {
-  content: "";
-  position: absolute;
-  width: 450px;
-  height: 450px;
-  background-color: #2979ff;
-  border-radius: 50%;
-  z-index: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
+
 .heroImage img {
-  max-width: 100%;
+  width: 100%;
+  max-width: 500px;
   height: auto;
-  position: relative;
-  z-index: 1;
+  border-radius: 20px; /* Bo góc ảnh chính nếu cần */
+  object-fit: cover;
+  /* Nếu ảnh gốc đã tách nền (transparent) thì không cần border-radius */
+}
+
+/* Style chung cho các hộp trôi nổi */
+.floatBox {
+  position: absolute;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  z-index: 2; /* Nổi lên trên ảnh */
+  animation: floatAnimation 3s ease-in-out infinite;
+}
+
+/* --- Box 1: Super Reliable (Góc trên trái) --- */
+.boxReliable {
+  top: 10%;
+  left: -20px; /* Kéo ra ngoài ảnh một chút */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+}
+
+.iconCloud {
+  font-size: 24px;
+  color: #6200ea;
+}
+
+.boxLabelStrong {
+  font-weight: 800;
+  color: #0f172a;
+  font-size: 14px;
+}
+
+.boxSubText {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+/* --- Box 2: Purple Globe (Góc trên phải) --- */
+.boxGlobe {
+  top: 25%;
+  right: -10px;
+  background-color: #6200ea; /* Nền tím */
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Hình tròn */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  animation-delay: 1s; /* Chuyển động lệch pha cho tự nhiên */
+}
+
+/* --- Box 3: Engagement Chart (Góc dưới phải) --- */
+.boxEngagement {
+  bottom: 15%;
+  right: -30px;
+  text-align: center;
+  padding: 20px;
+  min-width: 140px;
+  animation-delay: 0.5s;
+}
+
+.iconChart {
+  width: 40px;
+  height: 40px;
+  background-color: #f3e8ff; /* Tím rất nhạt */
+  color: #6200ea;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px auto; /* Căn giữa */
+  font-size: 18px;
+}
+
+.boxValueBig {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* Animation nhẹ nhàng cho các box */
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* --- Responsive Tablet/Mobile --- */
+@media (max-width: 992px) {
+  .heroWrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .heroContent {
+    max-width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .btnGroup {
+    justify-content: center;
+  }
+
+  /* Ẩn bớt các box trôi nổi trên mobile nếu chật chội, hoặc chỉnh vị trí */
+  .boxReliable {
+    left: 0;
+    top: 0;
+  }
+  .boxEngagement {
+    right: 0;
+    bottom: 0;
+  }
+  .boxGlobe {
+    display: none;
+  } /* Ví dụ ẩn bớt */
 }
 
 /* Float Boxes */
@@ -165,9 +312,15 @@
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .boxPrice {
@@ -180,8 +333,14 @@
   padding: 10px 20px;
   border-radius: 8px;
 }
-.boxLabel { font-size: 0.8rem; opacity: 0.9; }
-.boxValue { font-weight: bold; font-size: 1.1rem; }
+.boxLabel {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+.boxValue {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
 
 .boxSsl {
   top: 50%;
@@ -198,7 +357,13 @@
   justify-content: center;
   color: #ff9800;
 }
-.boxSsl p { font-size: 0.85rem; line-height: 1.3; font-weight: 600; color: #333; margin: 0; }
+.boxSsl p {
+  font-size: 0.85rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
 
 .boxGuarantee {
   bottom: 20px;
@@ -214,7 +379,13 @@
   height: 30px;
   font-size: 0.8rem;
 }
-.boxGuarantee p { font-size: 0.8rem; line-height: 1.2; font-weight: 600; color: #333; margin: 0; }
+.boxGuarantee p {
+  font-size: 0.8rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
 
 /* --- 4. FEATURES --- */
 .featuresGrid {
@@ -241,11 +412,18 @@
   color: var(--primary-color);
   margin-bottom: 20px;
 }
-.featureCard h3 { margin-bottom: 15px; }
-.featureCard p { color: var(--text-light); font-size: 0.95rem; }
+.featureCard h3 {
+  margin-bottom: 15px;
+}
+.featureCard p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
 
 /* --- 5. PRICING --- */
-.pricingSection { background-color: var(--bg-light); }
+.pricingSection {
+  background-color: var(--bg-light);
+}
 .pricingTable {
   display: flex;
   justify-content: center;
@@ -253,20 +431,22 @@
   flex-wrap: wrap;
 }
 
-
-
-
-
-
 /* --- 6. SPECS --- */
 .specsContainer {
   display: flex;
   align-items: center;
   gap: 50px;
 }
-.specsImage { flex: 1; }
-.specsImage img { width: 100%; border-radius: 10px; }
-.specsContent { flex: 1; }
+.specsImage {
+  flex: 1;
+}
+.specsImage img {
+  width: 100%;
+  border-radius: 10px;
+}
+.specsContent {
+  flex: 1;
+}
 
 .specItem {
   display: flex;
@@ -293,7 +473,10 @@
   gap: 20px;
   flex-wrap: wrap;
 }
-.deployContent { flex: 1; min-width: 300px; }
+.deployContent {
+  flex: 1;
+  min-width: 300px;
+}
 
 .deployBadge {
   background: rgba(255, 255, 255, 0.1);
@@ -307,10 +490,21 @@
   margin-bottom: 15px;
   border: 1px solid var(--accent-color);
 }
-.deployContent h2 { font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2; }
-.deployContent p { color: #ccc; margin-bottom: 30px; font-size: 1.1rem; }
+.deployContent h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.deployContent p {
+  color: #ccc;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
 
-.deployList { display: grid; gap: 20px; }
+.deployList {
+  display: grid;
+  gap: 20px;
+}
 
 .deployList li {
   display: flex;
@@ -331,43 +525,30 @@
   width: 40px;
   text-align: center;
 }
-.wpIcon { color: #21759b !important; }
-.laravelIcon { color: #ff2d20 !important; }
-.dbIcon { color: #f29111 !important; }
-
-.deployList strong { display: block; font-size: 1.1rem; margin-bottom: 3px; }
-.deployList span { font-size: 0.9rem; color: #aaa; }
-
-.deployPricingCard {
-  flex: 0 0 350px;
-  background: white;
-  color: #333;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  text-align: center;
+.wpIcon {
+  color: #21759b !important;
 }
-.deployPricingCard h3 { font-size: 1.3rem; color: #555; margin-bottom: 10px; }
-.deployPrice { font-size: 2.5rem; color: var(--primary-color); font-weight: 800; }
-.deployPrice span { font-size: 1rem; color: #999; font-weight: normal; }
-
-.deployNote {
-  font-size: 0.85rem;
-  color: #e74c3c;
-  margin: 10px 0 20px;
-  font-style: italic;
+.laravelIcon {
+  color: #ff2d20 !important;
 }
-.deployPricingCard hr {
-  border: 0;
-  border-top: 1px solid #eee;
-  margin: 20px 0;
+.dbIcon {
+  color: #f29111 !important;
 }
-.deployFeatures { text-align: left; margin-bottom: 20px; }
-.deployFeatures li { margin-bottom: 10px; font-size: 0.95rem; color: #555; }
 
+.deployList strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 3px;
+}
+.deployList span {
+  font-size: 0.9rem;
+  color: #aaa;
+}
 
 /* --- 8. FAQ --- */
-.faqSection { background-color: var(--bg-light); }
+.faqSection {
+  background-color: var(--bg-light);
+}
 .faqItem {
   background: var(--white);
   margin-bottom: 15px;
@@ -375,14 +556,19 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
   overflow: hidden;
 }
-.details { padding: 20px; cursor: pointer; }
+.details {
+  padding: 20px;
+  cursor: pointer;
+}
 .summary {
   font-weight: 600;
   list-style: none;
   position: relative;
   padding-right: 30px;
 }
-.summary::-webkit-details-marker { display: none; }
+.summary::-webkit-details-marker {
+  display: none;
+}
 .summary::after {
   content: "+";
   position: absolute;
@@ -391,7 +577,9 @@
   color: var(--primary-color);
   line-height: 1;
 }
-.details[open] .summary::after { content: "-"; }
+.details[open] .summary::after {
+  content: "-";
+}
 .details p {
   margin-top: 15px;
   color: var(--text-light);
@@ -399,30 +587,51 @@
   padding-top: 15px;
 }
 
-
-
 /* --- RESPONSIVE --- */
 @media (max-width: 992px) {
-  .specsContainer { flex-direction: column; }
-  .heroWrapper { flex-direction: column; text-align: center; }
-  .heroFeatures { display: inline-grid; text-align: left; }
-  .heroImage { margin-top: 50px; }
-  .heroImage::before { width: 300px; height: 300px; }
-  .boxSsl { right: 0; }
-  .boxPrice { left: 50%; transform: translateX(-50%); top: -20px; }
-  .pricingCardPopular { transform: scale(1); }
+  .specsContainer {
+    flex-direction: column;
+  }
+  .heroWrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+  .heroFeatures {
+    display: inline-grid;
+    text-align: left;
+  }
+  .heroImage {
+    margin-top: 50px;
+  }
+  .heroImage::before {
+    width: 300px;
+    height: 300px;
+  }
+  .boxSsl {
+    right: 0;
+  }
+  .boxPrice {
+    left: 50%;
+    transform: translateX(-50%);
+    top: -20px;
+  }
+  .pricingCardPopular {
+    transform: scale(1);
+  }
 }
 
 @media (max-width: 768px) {
-  .navLinks { display: none; }
-  .deployWrapper { flex-direction: column; }
-  .deployPricingCard { width: 100%; flex: none; }
+  .navLinks {
+    display: none;
+  }
+  .deployWrapper {
+    flex-direction: column;
+  }
+  .deployPricingCard {
+    width: 100%;
+    flex: none;
+  }
 }
-
-
-
-
-
 
 /* session Đặc điểm nổi bật */
 
@@ -449,8 +658,8 @@
 }
 
 .heading {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 52px;
+  font-weight: 900;
   text-transform: uppercase;
   color: #333;
   margin-bottom: 15px;
@@ -491,12 +700,12 @@
   background: #fff;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
   /* Căn giữa nội dung trong card */
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   text-align: center;
 }
 

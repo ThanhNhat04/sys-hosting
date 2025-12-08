@@ -1,6 +1,8 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEarthAfrica } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "@/components/header/header.js";
 import Footer from "@/components/footer/Footer";
@@ -18,7 +20,6 @@ export default function Home() {
       // url: "https://storyset.com/data",
       isPopular: false,
       features: [
-        // --- 8 THÔNG SỐ QUAN TRỌNG NHẤT (HIỆN RA NGOÀI) ---
         "Website: 1",
         "Dung lượng: 2GB NVMe",
         "Ram: 1GB",
@@ -27,8 +28,6 @@ export default function Home() {
         "SSL: Miễn phí",
         "Tên miền phụ miễn phí: 1",
         "Managed WordPress: Có",
-
-        // --- CÁC THÔNG SỐ KHÁC (ẨN TRONG NÚT XEM THÊM) ---
         "MySQL: Không giới hạn",
         "Free 1-click: WordPress Installation",
         "WordPress Acceleration: LiteSpeed",
@@ -113,18 +112,14 @@ export default function Home() {
       id: 1,
       name: "Static Dev",
       price: "100,000 đ",
-      oldPrice: "150,000 đ", // Giá ảo để hiện giảm giá
-      discount: "-33%", // Hoặc ghi "Mua năm chỉ 999k"
+      oldPrice: "150,000đ",
+      discount: "-33%",
       isPopular: false,
       features: [
-        // --- 8 TÍNH NĂNG QUAN TRỌNG (HIỆN MẶC ĐỊNH) ---
         "Số lượng: 3 Static Websites",
         "Tên miền phụ miễn phí: 3",
         "Băng thông: Không giới hạn",
         "SSL: Miễn phí tự động",
-        // "CDN: Global Acceleration",
-
-        // --- CÁC TÍNH NĂNG ẨN (XEM THÊM) ---
         "Custom Domain: Hỗ trợ miễn phí",
         "Uptime Guarantee: 99.9%",
         "Hỗ trợ kỹ thuật: Ticket 24/7",
@@ -133,16 +128,15 @@ export default function Home() {
     {
       id: 2,
       name: "Business App",
-      price: "250,000 đ", // Giá khởi điểm
+      price: "250,000 đ",
       oldPrice: "",
-      discount: "Start from", // Badge hiển thị "Chỉ từ"
-      isPopular: false, // Gói Doanh nghiệp nên để nổi bật
+      discount: "Chỉ từ",
+      isPopular: false,
       features: [
-        // --- 8 TÍNH NĂNG QUAN TRỌNG (HIỆN MẶC ĐỊNH) ---
         "Ứng dụng: Dynamic (NodeJS, Python, Go...)",
         "Docker & Container Registry: Có",
         "Zero Downtime Deployment: Có",
-        "Database: Managed (MySQL)",
+        "Database: Tùy nhu cầu",
         "Auto-scaling: CPU & RAM",
         "Monitoring & Metrics: Real-time",
         "Support: Priority 24/7 (Ưu tiên)",
@@ -153,89 +147,84 @@ export default function Home() {
   return (
     <>
       <Header />
-      <section className={styles.heroHosting}>
+      <section id="home" className={styles.heroHosting}>
         <div className={styles.container}>
           <div className={styles.heroWrapper}>
+            {/* LEFT SIDE: CONTENT */}
             <div className={styles.heroContent}>
+              {/* Badge trên cùng */}
+              <div className={styles.topBadgeWrapper}>
+                <span className={styles.badgePill}>
+                  <i className="fa-solid fa-globe"></i> Hosting NVME giá rẻ Giảm
+                  đến 60%
+                </span>
+              </div>
+
               <h1>
-                SSD HOSTING <br />
-                THẾ HỆ MỚI <span className={styles.badgeNew}>NEW</span>
+                HOSTING NVME
+                <br />
+                Tốc Độ Cao.
               </h1>
 
-              <ul className={styles.heroFeatures}>
-                <li>
-                  <i className="fa-regular fa-circle-check"></i> Tốc độ cao và
-                  ổn định
-                </li>
-                <li>
-                  <i className="fa-regular fa-circle-check"></i> Backup dữ liệu
-                  hàng ngày
-                </li>
-                <li>
-                  <i className="fa-regular fa-circle-check"></i> Bảo mật với
-                  Imunify360
-                </li>
-                <li>
-                  <i className="fa-regular fa-circle-check"></i> Miễn phí chuyển
-                  dữ liệu
-                </li>
-                <li>
-                  <i className="fa-regular fa-circle-check"></i> Quản trị cPanel
-                  bản quyền
-                </li>
-                <li>
-                  <i className="fa-regular fa-circle-check"></i> Miễn phí SSL và
-                  bộ plugin
-                </li>
-                <li>
-                  <i className="fa-regular fa-circle-check"></i> LiteSpeed Web
-                  Server
-                </li>
-                <li>
-                  <i className="fa-regular fa-circle-check"></i> Cam kết hoàn
-                  tiền
-                </li>
-              </ul>
+              {/* Thay thế ul bằng paragraph mô tả */}
+              <p className={styles.heroDescription}>
+                Trải nghiệm Web Hosting tốc độ cao trên nền tảng CPU Intel
+                Scalable/AMD EPYC và NVMe Enterprise RAID-10. Băng thông không
+                giới hạn, đảm bảo website vận hành mượt mà và ổn định tuyệt đối.
+              </p>
 
-              <a href="#register" className={styles.btnRegister}>
-                Đăng ký ngay
-              </a>
+              {/* Group button hành động */}
+              <div className={styles.btnGroup}>
+                <a href="#trial" className={styles.btnPrimary}>
+                  Đăng ký ngay
+                </a>
+              </div>
             </div>
 
             <div className={styles.heroImage}>
-              <img src="https://i.imgur.com/1tN5H7p.png" alt="Hosting Model" />
+              <Image
+                src="/assets/Server-amico.svg"
+                width={500}
+                height={500}
+                alt="server"
+              />
 
-              {/* Dùng Template Literals để nối 2 class */}
-              <div className={`${styles.floatBox} ${styles.boxPrice}`}>
-                <div className={styles.boxLabel}>Giá ưu đãi</div>
-                <div className={styles.boxValue}>Chỉ từ 10.000đ/tháng</div>
+              {/* Box 1: Top Left - Super Reliable */}
+              <div className={`${styles.floatBox} ${styles.boxReliable}`}>
+                <div className={styles.iconCloud}>
+                  <i className="fa-solid fa-cloud"></i>
+                </div>
+                <div className={styles.boxTextContent}>
+                  <div className={styles.boxLabelStrong}>Ổn định Tuyệt đối</div>
+                  <div className={styles.boxSubText}>
+                    Hoạt động liên tục 24/7
+                  </div>
+                </div>
               </div>
 
-              <div className={`${styles.floatBox} ${styles.boxSsl}`}>
-                <div className={styles.iconCircle}>
-                  <i className="fa-solid fa-ticket"></i>
-                </div>
-                <p>
-                  Miễn phí SSL &<br />
-                  bộ plugin bản quyền
-                </p>
+              {/* Box 2: Top Right - Purple Globe */}
+              <div className={`${styles.floatBox} ${styles.boxGlobe}`}>
+                <FontAwesomeIcon
+                  icon={faEarthAfrica}
+                  style={{ color: "grey", fontSize: "24px" }}
+                />
               </div>
 
-              <div className={`${styles.floatBox} ${styles.boxGuarantee}`}>
-                <div className={styles.iconCircleOrange}>
-                  <i className="fa-solid fa-dollar-sign"></i>
+              {/* Box 3: Bottom Right - Engagements */}
+              <div className={`${styles.floatBox} ${styles.boxEngagement}`}>
+                <div className={styles.iconChart}>
+                  <i className="fa-solid fa-chart-line"></i>
                 </div>
-                <p>
-                  Cam kết hoàn tiền nếu
-                  <br />
-                  khách hàng không hài lòng
-                </p>
+                <div className={styles.boxTextContent}>
+                  <div className={styles.boxValueBig}>+100%</div>
+                  <div className={styles.boxSubText}>Tương tác</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
+      {/* Bảng giá */}
       <section
         id="pricing"
         className={`${styles.pricingSection} ${styles.sectionPadding}`}
@@ -257,12 +246,12 @@ export default function Home() {
       </section>
 
       {/* Dịch vụ giá tăng */}
-      <section className={styles.deploySection}>
+      <section id="deploy" className={styles.deploySection}>
         <div className={styles.container}>
           <div className={styles.deployWrapper}>
             {/* Cột Nội Dung */}
             <div className={styles.deployContent}>
-              <div className={styles.deployBadge}>Dịch Vụ Gia Tăng</div>
+              <div className={styles.deployBadge}>Giải pháp Web Toàn Diện</div>
               <h2>Bạn Có App Nhưng Không Có Tài Nguyên Để Deploy</h2>
               <p>
                 Đừng lo lắng! Đội ngũ kỹ thuật của Tetras sẽ giúp bạn đưa
@@ -296,75 +285,6 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-
-            {/* Cột Giá 1: Tiêu Chuẩn */}
-            {/* <div className={styles.deployPricingCard}>
-              <h3>Gói Deploy Tiêu Chuẩn</h3>
-              <div className={styles.deployPrice}>
-                150.000đ <span>/lần</span>
-              </div>
-              <p className={styles.deployNote}>
-                *Miễn phí 100% nếu đăng ký gói <strong>Enterprise</strong> từ 1
-                năm.
-              </p>
-              <hr />
-              <ul className={styles.deployFeatures}>
-                <li>
-                  <i className={`fa-solid fa-check ${styles.checkIcon}`}></i>{" "}
-                  Thiết lập môi trường chạy code.
-                </li>
-                <li>
-                  <i className={`fa-solid fa-check ${styles.checkIcon}`}></i>{" "}
-                  Tặng subdomain miễn phí.
-                </li>
-                <li>
-                  <i className={`fa-solid fa-check ${styles.checkIcon}`}></i>{" "}
-                  Trỏ tên miền & cài đặt SSL HTTPS.
-                </li>
-                <li>
-                  <i className={`fa-solid fa-check ${styles.checkIcon}`}></i>{" "}
-                  Bảo hành lỗi kỹ thuật 7 ngày.
-                </li>
-              </ul>
-              <Link href="#" className={styles.btnPrimary}>
-                Yêu Cầu Hỗ Trợ
-              </Link>
-            </div> */}
-
-            {/* Cột Giá 2: Business */}
-            {/* <div className={styles.deployPricingCard}>
-              <h3>Gói Business</h3>
-              <div className={styles.deployPrice}>
-                Giá liên hệ */}
-            {/* <span>/dự án</span> */}
-            {/* </div>
-              <p className={styles.deployNote}>
-                *Miễn phí 100% nếu đăng ký gói <strong>Business</strong> từ 1
-                năm.
-              </p>
-              <hr />
-              <ul className={styles.deployFeatures}>
-                <li>
-                  <i className={`fa-solid fa-check ${styles.checkIcon}`}></i>{" "}
-                  Bao gồm quyền lợi gói Tiêu Chuẩn.
-                </li>
-                <li>
-                  <i className={`fa-solid fa-check ${styles.checkIcon}`}></i>{" "}
-                  Tặng Subdomain TetraS độc quyền.
-                </li>
-                <li>
-                  <i className={`fa-solid fa-check ${styles.checkIcon}`}></i> Hỗ
-                  trợ cấu hình nâng cao (VPS/Docker).
-                </li>
-                <li>
-                  <i className={`fa-solid fa-check ${styles.checkIcon}`}></i>{" "}
-                  Bảo hành lỗi kỹ thuật 30 ngày.
-                </li>
-              </ul>
-              <Link href="#" className={styles.btnPrimary}>
-                Yêu Cầu Hỗ Trợ
-              </Link>
-            </div> */}
             {deploymentPlans.map((plan) => (
               <PricingCard key={plan.id} plan={plan} />
             ))}
@@ -379,10 +299,10 @@ export default function Home() {
             {/* --- CỘT TRÁI: Tiêu đề & Ảnh --- */}
             <div className={styles.leftColumn}>
               <div className={styles.stickyContent}>
-                <h2 className={styles.heading}>
+                <h1 className={styles.heading}>
                   Đặc tính <br />
                   <span className={styles.highlight}>Nổi bật</span>
-                </h2>
+                </h1>
                 <p className={styles.subHeading}>
                   Công nghệ tiên tiến giúp website của bạn vận hành ổn định và
                   bảo mật.
@@ -406,17 +326,12 @@ export default function Home() {
                 <div className={styles.featureItem}>
                   <div className={styles.iconWrapper}>
                     <Image
-                      src="assets/data.svg"
+                      src="/assets/digital.png"
                       width={500}
                       height={500}
                       alt="Hạ tầng mạnh mẽ"
                       className={styles.icon}
                     />
-                    {/* <Image
-                      src="/assets/data.svg"
-                      alt="Hạ tầng mạnh mẽ"
-                      className={styles.icon}
-                    /> */}
                   </div>
                   <h3 className={styles.featureTitle}>Hạ tầng mạnh mẽ</h3>
                   <p className={styles.featureDesc}>
@@ -429,16 +344,11 @@ export default function Home() {
                 {/* Item 2 */}
                 <div className={styles.featureItem}>
                   <div className={styles.iconWrapper}>
-                    {/* <img
-                      src="/icons/ssd.png"
-                      alt="Truy xuất nhanh"
-                      className={styles.icon}
-                    /> */}
                     <Image
-                      src="assets/data.svg"
+                      src="/assets/drive.png"
                       width={500}
                       height={500}
-                      alt="Hạ tầng mạnh mẽ"
+                      alt="Truy xuất nhanh"
                       className={styles.icon}
                     />
                   </div>
@@ -455,9 +365,11 @@ export default function Home() {
                 {/* Item 3 */}
                 <div className={styles.featureItem}>
                   <div className={styles.iconWrapper}>
-                    <img
-                      src="/icons/security.png"
-                      alt="An toàn bảo mật"
+                    <Image
+                      src="/assets/security.png"
+                      width={500}
+                      height={500}
+                      alt="Hạ tầng mạnh mẽ"
                       className={styles.icon}
                     />
                   </div>
@@ -472,8 +384,10 @@ export default function Home() {
                 {/* Item 4 */}
                 <div className={styles.featureItem}>
                   <div className={styles.iconWrapper}>
-                    <img
-                      src="/icons/support.png"
+                    <Image
+                      src="/assets/support.png"
+                      width={500}
+                      height={500}
                       alt="Hỗ trợ 24/7"
                       className={styles.icon}
                     />
@@ -491,7 +405,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className={styles.sectionPadding}>
+      {/* <section id="services" className={styles.sectionPadding}>
         <div className={styles.container}>
           <div className={styles.sectionTitle}>
             <h2>Tại Sao Chọn TetraS Hosting?</h2>
@@ -539,7 +453,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className={`${styles.faqSection} ${styles.sectionPadding}`}>
         <div className={styles.container}>
           <div className={styles.sectionTitle}>

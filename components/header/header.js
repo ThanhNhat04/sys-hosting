@@ -15,10 +15,11 @@ export default function Header() {
   };
 
   const navLinks = [
-    { name: "Trang chủ", href: "#" },
-    { name: "Giới thiệu", href: "#" },
-    { name: "Sản phẩm", href: "#" },
-    { name: "Liên hệ", href: "#" },
+    { name: "Trang chủ", href: "#home" },
+    { name: "Giới thiệu", href: "#home" },
+    { name: "Hosting", href: "#pricing" },
+    { name: "Deploy", href: "#deploy" , hot: true},
+    { name: "Liên hệ", href: "#contact" },
   ];
 
   return (
@@ -55,21 +56,21 @@ export default function Header() {
           {/* Desktop Menu */}
           <div className={styles.desktopNav}>
             {navLinks.map((link) => (
-              <Link key={link.name} href={link.href} className={styles.navLink}>
+              <Link key={link.name} href={link.href} className={`${styles.navLink} ${link.hot ? styles.navHot : ''}`}>
                 {link.name}
               </Link>
             ))}
           </div>
 
           {/* Login/ logout Buttons */}
-          <div className={styles.authWrapper}>
+          {/* <div className={styles.authWrapper}>
             <Link href="#" className={styles.loginBtn}>
               Đăng nhập
             </Link>
             <Link href="#" className={styles.registerBtn}>
               Đăng ký
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
 

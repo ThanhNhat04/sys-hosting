@@ -15,7 +15,7 @@ export default function Footer() {
               Cung cấp dịch vụ Cloud Hosting, VPS, Server chất lượng cao tại
               Việt Nam.
             </p>
-            <div className={styles.socialLinks} style={{ marginTop: "20px" }}>
+            {/* <div className={styles.socialLinks} style={{ marginTop: "20px" }}>
               <a href="#">
                 <i className="fa-brands fa-facebook-f"></i>
               </a>
@@ -25,7 +25,7 @@ export default function Footer() {
               <a href="#">
                 <i className="fa-brands fa-linkedin-in"></i>
               </a>
-            </div>
+            </div> */}
           </div>
           <div className={styles.footerCol}>
             <h4>Sản Phẩm</h4>
@@ -52,7 +52,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className={styles.footerCol}>
+          {/* <div className={styles.footerCol}>
             <h4>Liên Hệ</h4>
             <ul>
               <li>
@@ -66,7 +66,7 @@ export default function Footer() {
                 <i className="fa-solid fa-envelope"></i> support@tahosting.com
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
         <div className={styles.copyright}>
           &copy; 2025 Tetras Company. All Rights Reserved.
