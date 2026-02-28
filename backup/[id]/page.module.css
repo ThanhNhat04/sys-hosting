@@ -1,0 +1,212 @@
+.container {
+  padding: 20px;
+  background-color: #f3f4f6; /* Nền xám nhạt toàn trang */
+  min-height: 100vh;
+}
+
+.topNav {
+  margin-bottom: 20px;
+}
+
+.backLink {
+  color: #6b7280;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.pageTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* --- LAYOUT GRID --- */
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1fr 300px; /* Cột trái to, cột phải 300px */
+  gap: 20px;
+}
+
+@media (max-width: 992px) {
+  .layoutGrid {
+    grid-template-columns: 1fr; /* Mobile chuyển về 1 cột */
+  }
+}
+
+/* --- CARD STYLES --- */
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+/* --- LEFT COLUMN INFO ROWS --- */
+.infoRow {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #f3f4f6;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.label {
+  width: 180px;
+  color: #6b7280;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.value {
+  color: #111827;
+  font-weight: 500;
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.valueLink {
+  color: #111827;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto; /* Đẩy nút về bên phải */
+}
+
+.link {
+  color: #0ea5e9;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.warningText {
+  color: #eab308;
+  font-weight: 600;
+  margin-left: 10px;
+  font-size: 0.9rem;
+}
+
+/* --- BADGES --- */
+.badgeTrial {
+  background-color: #ffedd5;
+  color: #c2410c;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* --- BUTTONS --- */
+.btnPrimary {
+  background-color: #0ea5e9;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.btnPrimary:hover {
+  opacity: 0.9;
+}
+
+.btnSecondary {
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btnDark {
+  background-color: #4b5563;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btnIcon {
+  border: 1px solid #e5e7eb;
+  background: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  color: #6b7280;
+}
+
+/* --- RIGHT COLUMN ACTIONS --- */
+.quickActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.actionBtn {
+  width: 100%;
+  padding: 10px;
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.actionBtn:hover {
+  background-color: #4b5563;
+}
+
+.btnGradient {
+  background: linear-gradient(90deg, #3b82f6 0%, #ef4444 100%);
+  border: none;
+}
+
+/* --- FIREWALL SECTION --- */
+.subText {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+.btnFullBlue {
+  width: 100%;
+  padding: 10px;
+  background-color: #0ea5e9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}

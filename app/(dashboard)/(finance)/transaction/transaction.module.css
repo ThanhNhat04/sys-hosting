@@ -1,0 +1,166 @@
+.container {
+  padding: 20px 40px;
+  background-color: var(--bg-light);
+  min-height: 100vh;
+}
+
+.title {
+  text-align: start;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+  /* text-transform: uppercase; */
+}
+
+/* --- Action Buttons Area --- */
+.actionsContainer {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.filterGroup {
+  display: flex;
+  gap: 5px;
+  background: var(--white);
+  padding: 4px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.filterBtn {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.filterBtn:hover {
+  color: var(--primary-color);
+  background-color: rgba(37, 117, 252, 0.05);
+}
+
+
+.filterBtn.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(37, 117, 252, 0.2);
+}
+
+.tableContainer {
+  background-color: var(--white);
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.table thead tr {
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-align: left;
+}
+
+.table th,
+.table td {
+  padding: 16px 12px;
+}
+
+.table th {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+}
+
+
+.table tbody tr:hover {
+  background-color: rgba(37, 117, 252, 0.05); /* Tint của primary color khi hover */
+}
+
+.textCenter { text-align: center; }
+.textRight { text-align: right; }
+
+.statusPending {
+  color: #f39c12; 
+  font-weight: 500;
+}
+
+.statusSuccess {
+  color: #219653; 
+  font-weight: 500;
+}
+
+.depositAmount {
+  color: var(--primary-color2);
+  font-weight: 700;
+}
+
+/* ... Các code cũ giữ nguyên ... */
+
+/* --- Pagination Styles --- */
+.paginationContainer {
+  display: flex;
+  justify-content: center; /* Căn giữa màn hình */
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+  padding-bottom: 20px;
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 5px;
+}
+
+.pageBtn, .pageArrow {
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  background-color: var(--white);
+  color: var(--text-dark);
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.pageBtn:hover:not(.activePage), 
+.pageArrow:hover:not(:disabled) {
+  background-color: #f0f0f0;
+  border-color: #ccc;
+}
+
+/* Style cho trang đang active */
+.activePage {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Style cho nút Previous/Next khi bị disable */
+.pageArrow:disabled {
+  background-color: #f9f9f9;
+  color: #ccc;
+  cursor: not-allowed;
+  border-color: #eee;
+}

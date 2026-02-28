@@ -1,0 +1,317 @@
+/* Invoice.module.css */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #f3f4f6;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #333;
+}
+
+.wrapper {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* --- Left Column: Main Content --- */
+.mainContent {
+  flex: 3;
+  background: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.titleSection h1 {
+  font-size: 32px;
+  font-weight: 300;
+  margin: 0 0 10px 0;
+}
+
+.badge {
+  background-color: #fcebeb;
+  color: #d9534f;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.dates div {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.dates span {
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+/* Address Grid */
+.addressGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.sectionTitle {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+  font-size: 15px;
+}
+
+.companyName {
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.infoLine {
+  color: #666;
+  margin: 2px 0;
+}
+
+/* Table */
+.itemsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.itemsTable th {
+  text-align: left;
+  font-weight: bold;
+  padding: 15px 0;
+  border-bottom: 2px solid #eee;
+  color: #333;
+}
+
+.itemsTable td {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+  font-size: 14px;
+}
+
+.itemsTable .amountCol {
+  text-align: right;
+  font-weight: bold;
+}
+
+.itemDesc {
+  font-weight: 600;
+  display: block;
+}
+
+.itemSub {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Totals Section */
+.totals {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.totalLabel {
+  color: #666;
+  margin-right: 40px;
+  flex: 1;
+  text-align: right;
+}
+
+.totalValue {
+  text-align: right;
+  min-width: 100px;
+  font-weight: 500;
+}
+
+.totalRow.final {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.note {
+  margin-top: 30px;
+  font-size: 12px;
+  color: #999;
+}
+
+/* --- Right Column: Sidebar --- */
+.sidebar {
+  flex: 1;
+  min-width: 300px;
+}
+
+.paymentCard {
+  background-color: #007bff; /* Blue */
+  color: white;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.paymentLabel {
+  font-size: 13px;
+  opacity: 0.9;
+  margin-bottom: 5px;
+}
+
+.totalAmountLarge {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.paymentMethodSelect {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.momoLogo {
+  background: #a50064; /* Momo color placeholder */
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.payButton {
+  width: 100%;
+  background-color: #28a745; /* Green */
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.payButton:hover {
+  background-color: #218838;
+}
+
+.actionsSection h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: normal;
+}
+
+.actionLink {
+  display: flex;
+  align-items: center;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.actionIcon {
+  margin-right: 8px;
+}
+
+.sidebar {
+  flex: 1;
+  min-width: 300px;
+}
+
+.paymentCard {
+  background-color: #007bff;
+  color: white;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  text-align: center; /* Căn giữa nội dung QR */
+}
+
+.paymentLabel {
+  font-size: 13px;
+  opacity: 0.9;
+  margin-bottom: 5px;
+  text-align: left; /* Label vẫn căn trái */
+}
+
+.totalAmountLarge {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 25px;
+  text-align: left; /* Số tiền vẫn căn trái */
+}
+
+/* Style cho khu vực QR */
+.qrContainer {
+  background:#EAD3D7;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.qrImage {
+  width: 100%;
+  max-width: 200px; /* Giới hạn chiều rộng QR */
+  height: auto;
+  display: block;
+}
+
+.qrInstruction {
+  color: #333;
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.actionsSection h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: normal;
+}

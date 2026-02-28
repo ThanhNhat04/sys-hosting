@@ -1,0 +1,411 @@
+/* profile.module.css */
+
+.container {
+  padding: 20px 40px;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.pageTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 25px;
+}
+
+/* --- GRID LAYOUT --- */
+.profileGrid {
+  display: grid;
+  grid-template-columns: 320px 1fr; /* Cột trái cố định 320px, cột phải co giãn */
+  gap: 25px;
+  align-items: start;
+}
+
+/* --- LEFT COLUMN --- */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profileCard,
+.menuCard,
+.detailCard {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Avatar Section */
+.profileCard {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.avatarWrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 15px;
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #f3f4f6;
+}
+
+.cameraBtn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.userName {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 5px;
+}
+
+.userRole {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.kycBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #ecfdf5;
+  color: #059669;
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.statsRow {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 15px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.statItem:first-child {
+  border-right: 1px solid #f3f4f6;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+}
+
+.statValue {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+/* Menu Navigation */
+.menuCard {
+  padding: 10px;
+}
+
+.menuBtn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 15px;
+  border: none;
+  background: transparent;
+  color: #4b5563;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.menuIcon {
+  width: 20px;
+  margin-right: 12px;
+  color: #9ca3af;
+}
+
+.menuBtn:hover {
+  background-color: #f9fafb;
+  color: #2563eb;
+}
+
+.menuBtn:hover .menuIcon {
+  color: #2563eb;
+}
+
+.menuBtn.active {
+  background-color: #eff6ff;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.menuBtn.active .menuIcon {
+  color: #2563eb;
+}
+
+/* --- RIGHT COLUMN (FORMS) --- */
+.detailCard {
+  padding: 30px;
+}
+
+.cardHeader {
+  margin-bottom: 25px;
+}
+
+.cardHeader h3 {
+  font-size: 1.25rem;
+  color: #111827;
+  margin-bottom: 5px;
+}
+
+.cardHeader p {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* Form Styles */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 cột */
+  gap: 20px;
+}
+
+.formStack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 100%;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.formGroup label {
+  width: 180px;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.verifiedTag {
+  font-size: 0.75rem;
+  color: #059669;
+  background: #ecfdf5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+  font-weight: normal;
+}
+
+.input,
+.select {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.input:focus,
+.select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input:disabled {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.inputIconWrapper {
+  position: relative;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.inputIconWrapper .input {
+  padding-left: 40px;
+}
+
+/* Action Buttons */
+.formActions {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.btnSave {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 20%;
+}
+
+.btnSave:hover {
+  background-color: #1d4ed8;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+  margin: 30px 0;
+}
+
+/* Toggle Switch (Checkbox hack) */
+.twoFactorBox {
+  background-color: #f9fafb;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.switchWrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2563eb;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .profileGrid {
+    grid-template-columns: 1fr; /* Chuyển về 1 cột */
+  }
+
+  .leftColumn {
+    flex-direction: row; /* Avatar và Menu nằm ngang nếu muốn, hoặc giữ dọc */
+    flex-wrap: wrap;
+  }
+
+  .profileCard {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .menuCard {
+    flex: 1;
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr; /* Form 1 cột trên mobile */
+  }
+
+  .leftColumn {
+    flex-direction: column;
+  }
+  .formGroup {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btnSave {
+    width: 100%;
+  }
+}

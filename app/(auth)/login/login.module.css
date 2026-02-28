@@ -1,0 +1,153 @@
+/* login.module.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.card {
+  width: 100%;
+  max-width: 450px;
+  padding: 20px;
+  background: white;
+}
+
+/* Phần tiêu đề */
+.title {
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #241c15;
+}
+
+.subtitle {
+  font-size: 14px;
+  margin-bottom: 30px;
+  color: #241c15;
+}
+
+.link {
+  color: #007c89;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Các trường input */
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600; /* Đậm vừa phải */
+  color: #241c15;
+  margin-bottom: 8px;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s;
+  color: #241c15;
+}
+
+.input:focus {
+  border-color: #007c89;
+  box-shadow: 0 0 0 1px #007c89;
+}
+
+/* Nút Show Password */
+.showBtn {
+  position: absolute;
+  right: 0;
+  top: -30px; /* Đẩy lên ngang hàng với Label như trong hình */
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007c89;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Checkbox */
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+  accent-color: #007c89; /* Màu checkbox khi tích */
+}
+
+.checkboxLabel {
+  font-size: 14px;
+  color: #241c15;
+  font-weight: 500;
+}
+
+/* Nút Submit */
+.submitBtn {
+  background-color: #007c89;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-width: 120px;
+}
+
+.submitBtn:hover {
+  background-color: #00606a;
+}
+
+/* Footer links */
+.footerLinks {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footerLinks a {
+  font-size: 13px;
+  color: #007c89;
+  text-decoration: underline;
+}
+
+.footerLinks a:hover {
+  text-decoration: none;
+}
+
+.btn-login {
+  display: flex;
+  justify-content: center;
+}

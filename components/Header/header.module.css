@@ -1,0 +1,167 @@
+/* Header.module.css */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.container {
+  max-width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.navWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoImage {
+  display: block;
+  object-fit: contain;
+  margin-left: 15px;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; 
+}
+
+.iconAction {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: #333; 
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.iconAction:hover {
+  color: #2563eb;
+}
+
+/* --- Avatar Button --- */
+.profileWrapper {
+  position: relative; 
+}
+
+.avatarBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.avatarCircle {
+  width: 32px;
+  height: 32px;
+  background-color: #e5e7eb; 
+  color: #9ca3af; 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+/* --- PROFILE POPUP CARD --- */
+.profilePopup {
+  position: absolute;
+  top: 50px;
+  right: -10px; 
+  width: 320px; 
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15); 
+  padding: 20px;
+  z-index: 100;
+  border: 1px solid #f3f4f6;
+}
+
+.profilePopup::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 20px;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  transform: rotate(45deg);
+  border-left: 1px solid #f3f4f6;
+  border-top: 1px solid #f3f4f6;
+}
+
+.popupContent {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+/* Avatar lớn trong popup */
+.bigAvatar {
+  width: 60px;
+  height: 60px;
+  /* background-color: #d1d5db;  */
+  /* color: #fff; */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fullName {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #000;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.userRole {
+  font-size: 0.9rem;
+  color: var(--color-icon); 
+  margin-bottom: 2px;
+}
+
+.userEmail {
+  font-size: 0.85rem;
+  color: var(--color-icon);
+  word-break: break-all; 
+}
+
+/* --- Responsive chỉnh sửa --- */
+@media (max-width: 480px) {
+  .profilePopup {
+    width: 280px; 
+    right: -5px;
+  }
+  
+  .rightSection {
+    gap: 0.2rem; 
+  }
+}
