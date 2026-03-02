@@ -22,7 +22,7 @@ const USER_PROFILE = {
   phone: "0912345678",
   address: "Biên Hòa, Đồng Nai, Việt Nam",
   joinDate: "20/12/2023",
-  kycStatus: true, // Đã xác thực
+  kycStatus: true, 
   avatar:
     "https://ui-avatars.com/api/?name=Thanh+Nhat&background=random&size=200",
 };

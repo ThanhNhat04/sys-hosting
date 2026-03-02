@@ -25,7 +25,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const response = await authService.login(email, password);
-      const token = response.accessToken || response.token;
+      const token = response.data.accessToken || response.data.token;
       if (token) {
         localStorage.setItem("accessToken", token);
         Cookies.set("accessToken", token, { expires: 7 });
