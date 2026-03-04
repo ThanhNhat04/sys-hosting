@@ -65,8 +65,8 @@ const MENU_ITEMS = [
     name: "Hỗ trợ",
     icon: faLifeRing,
     children: [
-      { name: "Mở yêu cầu hỗ  trợ", path: "/ticket/create", icon: faLifeRing },
-      { name: "Các yêu cầu đã gửi", path: "/ticket/list", icon: faLifeRing },
+      { name: "Mở yêu cầu hỗ  trợ", path: "/ticket/create-ticket", icon: faLifeRing },
+      { name: "Các yêu cầu đã gửi", path: "/ticket/list-ticket", icon: faLifeRing },
     ],
   },
 ];

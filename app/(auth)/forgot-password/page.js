@@ -13,7 +13,6 @@ import {
 export default function ForgotPasswordPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Xử lý logic gửi email tại đây
   };
 
   return (

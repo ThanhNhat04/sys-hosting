@@ -1,7 +1,9 @@
-const V1 = '/api/v1';
+const V1 = "/api/v1";
+const FASTPANEL = "/api/fastpanel";
 
 export const ENDPOINTS = {
-  HEALTH: '/health',
+  //Backend Portal API
+  HEALTH: "/health",
   AUTH: { LOGIN: `${V1}/auth/login` },
   USERS: {
     ME: `${V1}/users/me`,
@@ -41,5 +43,20 @@ export const ENDPOINTS = {
     ID: (id) => `${V1}/tickets/${id}`,
     REPLIES: (id) => `${V1}/tickets/${id}/replies`,
     REPLY_ACTION: (id) => `${V1}/tickets/${id}/reply`,
-  }
+  },
+  // Fastpanel API
+  ADMIN: {
+    SERVERS: {
+      BASE: `${FASTPANEL}/servers`,
+      RELOAD: `${FASTPANEL}/servers/reload`,
+    },
+    USERS: {
+      BASE: `${FASTPANEL}/users`,
+      ID: (id) => `${FASTPANEL}/users/${id}`,
+      CHPASS: (username) => `${FASTPANEL}/users/${username}/chpasswd`, 
+      DISABLE: (id) => `${FASTPANEL}/users/${id}/disable`,
+      ENABLE: (id) => `${FASTPANEL}/users/${id}/enable`,
+      QUOTA: (id) => `${FASTPANEL}/users/${id}/quota`,
+    },
+  },
 };

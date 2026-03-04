@@ -95,7 +95,7 @@ export default function ProfilePage() {
               Bảo mật & Đăng nhập
             </button>
 
-            <button
+            {/* <button
               className={`${styles.menuBtn} ${
                 activeTab === "vat-infomation" ? styles.active : ""
               }`}
@@ -103,9 +103,9 @@ export default function ProfilePage() {
             >
               <FontAwesomeIcon icon={faBell} className={styles.menuIcon} />
               Thông xuất hóa đơn VAT
-            </button>
+            </button> */}
 
-            <button
+            {/* <button
               className={`${styles.menuBtn} ${
                 activeTab === "notification" ? styles.active : ""
               }`}
@@ -113,7 +113,7 @@ export default function ProfilePage() {
             >
               <FontAwesomeIcon icon={faBell} className={styles.menuIcon} />
               Cấu hình thông báo
-            </button>
+            </button> */}
           </div>
         </div>
 
@@ -152,7 +152,7 @@ export default function ProfilePage() {
                       type="email"
                       defaultValue={USER_PROFILE.email}
                       className={styles.input}
-                      disabled
+                      // disabled
                     />
                   </div>
                 </div>

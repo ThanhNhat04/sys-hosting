@@ -1,5 +1,5 @@
-import axiosClient from './axiosClient';
-import { ENDPOINTS } from './endpoints';
+import axiosClient from "./axiosClient";
+import { ENDPOINTS } from "./endpoints";
 
 export const financeService = {
   listInvoices: () => axiosClient.get(ENDPOINTS.FINANCE.INVOICES),
@@ -7,7 +7,7 @@ export const financeService = {
   getInvoice: (id) => axiosClient.get(ENDPOINTS.FINANCE.INVOICE_ID(id)),
   cancelInvoice: (id) => axiosClient.delete(ENDPOINTS.FINANCE.INVOICE_ID(id)),
   payInvoice: (id) => axiosClient.post(ENDPOINTS.FINANCE.PAY(id)),
-
-  checkVoucher: (code) => axiosClient.post(ENDPOINTS.FINANCE.VOUCHERS_CHECK, { code }),
+  checkVoucher: (code) =>
+    axiosClient.post(ENDPOINTS.FINANCE.VOUCHERS_CHECK, { code }),
   listMyVouchers: () => axiosClient.get(ENDPOINTS.FINANCE.VOUCHERS_MY),
 };

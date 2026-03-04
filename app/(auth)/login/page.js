@@ -25,6 +25,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const response = await authService.login(email, password);
+      // console.log("Login successful:", response);
       const token = response.data.accessToken || response.data.token;
       if (token) {
         localStorage.setItem("accessToken", token);
