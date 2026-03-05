@@ -82,3 +82,43 @@ img, video, svg {
   margin: 0 auto;
   padding: 0 1rem;
 }
+
+
+
+/* app/globals.css */
+.card {
+  background: var(--bg-paper);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover { background: var(--primary-hover); }
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--bg-paper);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  text-align: left;
+}

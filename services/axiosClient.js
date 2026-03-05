@@ -23,12 +23,16 @@
 import axios from "axios";
 
 export const axiosClient = axios.create({
-  baseURL: "/api/v1/",
+  baseURL:
+    process.env.NEXT_PUBLIC_TETRAS_BACKEND_URL ||
+    "https://backend-tetras.talab.io.vn/",
   headers: { "Content-Type": "application/json" },
 });
 
 export const fastpanelClient = axios.create({
-  baseURL: "/api/fastpanel",
+  baseURL:
+    process.env.NEXT_PUBLIC_FASTPANEL_BACKEND_URL ||
+    "https://fastpanel-api.tetrasco.com/",
   headers: { "Content-Type": "application/json" },
 });
 

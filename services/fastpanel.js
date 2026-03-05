@@ -1,4 +1,4 @@
-import fastpanelClient from "./axiosClient";
+import { fastpanelClient } from "./axiosClient";
 import { ENDPOINTS } from "./endpoints";
 
 export const fastpanelService = {

@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import { fastpanelService } from "@/services"; // Sử dụng đúng service cho hạ tầng
+import { useState, useEffect, use } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faKey,
@@ -11,12 +10,18 @@ import {
   faCheckCircle,
   faExclamationCircle,
   faDatabase,
+  faServer,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { use } from "react"; // Sử dụng để unwrapping params trong App Router mới
 
 export default function UserDetail({ params }) {
-  const { id } = use(params); // id ở đây có thể là username tùy theo cách bạn định nghĩa URL
+
+  const resolvedParams = use(params);
+  const userIdOrName = resolvedParams.id;
+  console.log("ID người dùng đã giải quyết:", resolvedParams);
+
+  const [servers, setServers] = useState([]);
+  const [selectedServer, setSelectedServer] = useState("");
   const [newPass, setNewPass] = useState("");
   const [quota, setQuota] = useState(50);
   const [status, setStatus] = useState({
@@ -25,60 +30,89 @@ export default function UserDetail({ params }) {
     message: "",
   });
 
+  const BASE_URL = "https://fastpanel-api.tetrasco.com";
+
+  // 1. Tự động lấy danh sách máy chủ khi truy cập trang
+  useEffect(() => {
+    const fetchServers = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/servers/`);
+        const data = await res.json();
+        setServers(data || []);
+        if (data?.length > 0) setSelectedServer(data[0]);
+      } catch (err) {
+        console.error("Lỗi lấy danh sách máy chủ");
+      }
+    };
+    fetchServers();
+  }, []);
+
+  // 2. Hàm xử lý API trực tiếp
   const handleUpdate = async (actionType) => {
+    if (!selectedServer) {
+      setStatus({
+        type: "error",
+        message: "Vui lòng chọn máy chủ để tiếp tục.",
+        loading: false,
+      });
+      return;
+    }
+
     setStatus({ loading: true, type: "", message: "" });
 
     try {
-      if (actionType === "pass") {
-        // Gọi API Fastpanel: POST /users/{username}/chpasswd
-        await fastpanelService.changePassword(id, newPass);
+      let endpoint = "";
+      let queryParams = "";
+
+      switch (actionType) {
+        case "pass":
+          // API yêu cầu username trong path
+          endpoint = `/users/${userIdOrName}/chpasswd`;
+          break;
+        case "disable":
+          endpoint = `/users/${userIdOrName}/disable?server_name=${selectedServer}`;
+          break;
+        case "enable":
+          endpoint = `/users/${userIdOrName}/enable?server_name=${selectedServer}`;
+          break;
+        case "quota":
+          // API Quota yêu cầu server_name và new_quota làm query params
+          endpoint = `/users/${userIdOrName}/quota`;
+          queryParams = `?server_name=${selectedServer}&new_quota=${quota}`;
+          break;
+      }
+
+      const res = await fetch(`${BASE_URL}${endpoint}${queryParams}`, {
+        method: "POST",
+        headers: { accept: "application/json" },
+      });
+
+      if (res.ok) {
         setStatus({
           type: "success",
-          message: "Đã cập nhật mật khẩu hệ thống thành công!",
+          message: "Thao tác trên Fastpanel thành công!",
           loading: false,
         });
-        setNewPass("");
-      } else if (actionType === "disable") {
-        // Gọi API Fastpanel: POST /users/{id}/disable
-        await fastpanelService.disableUser(id);
-        setStatus({
-          type: "success",
-          message: "Tài khoản đã được vô hiệu hóa tạm thời.",
-          loading: false,
-        });
-      } else if (actionType === "enable") {
-        // Gọi API Fastpanel: POST /users/{id}/enable
-        await fastpanelService.enableUser(id);
-        setStatus({
-          type: "success",
-          message: "Tài khoản đã được kích hoạt trở lại.",
-          loading: false,
-        });
-      } else if (actionType === "quota") {
-        // Gọi API Fastpanel: POST /users/{id}/quota
-        await fastpanelService.updateQuota(id, quota);
-        setStatus({
-          type: "success",
-          message: "Đã cập nhật hạn mức lưu trữ mới.",
-          loading: false,
-        });
+        if (actionType === "pass") setNewPass("");
+      } else {
+        const errData = await res.json();
+        throw new Error(errData.detail?.[0]?.msg || "Lỗi phản hồi từ API");
       }
     } catch (error) {
-      // Error message lấy từ Interceptor của axiosClient (err.response?.data || err.message)
       setStatus({
         type: "error",
-        message: error || "Có lỗi xảy ra khi xử lý yêu cầu.",
+        message: error.message || "Có lỗi kết nối xảy ra.",
         loading: false,
       });
     }
   };
 
   return (
-    <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+    <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "20px" }}>
       <Link
-        href="/admin/users"
+        href="/users"
         style={{
-          color: "var(--text-secondary)",
+          color: "#64748b",
           display: "flex",
           alignItems: "center",
           gap: "8px",
@@ -89,7 +123,42 @@ export default function UserDetail({ params }) {
         <FontAwesomeIcon icon={faArrowLeft} /> Quay lại danh sách quản trị
       </Link>
 
-      {/* Thông báo trạng thái nội bộ - Thay thế cho Toast */}
+      {/* Bộ chọn máy chủ trực tiếp */}
+      <div
+        style={{
+          background: "white",
+          padding: "20px",
+          borderRadius: "12px",
+          border: "1px solid #e2e8f0",
+          marginBottom: "24px",
+        }}
+      >
+        <h4
+          style={{ margin: "0 0 10px 0", fontSize: "14px", color: "#64748b" }}
+        >
+          <FontAwesomeIcon icon={faServer} /> MÁY CHỦ ĐANG THỰC THI:
+        </h4>
+        <select
+          value={selectedServer}
+          onChange={(e) => setSelectedServer(e.target.value)}
+          style={{
+            width: "100%",
+            padding: "12px",
+            borderRadius: "8px",
+            border: "1px solid #cbd5e1",
+            outline: "none",
+            fontSize: "16px",
+            fontWeight: "600",
+          }}
+        >
+          {servers.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
+        </select>
+      </div>
+
       {status.message && (
         <div
           style={{
@@ -102,7 +171,6 @@ export default function UserDetail({ params }) {
             background: status.type === "success" ? "#ecfdf5" : "#fef2f2",
             color: status.type === "success" ? "#059669" : "#dc2626",
             border: `1px solid ${status.type === "success" ? "#10b981" : "#ef4444"}`,
-            fontWeight: "500",
           }}
         >
           <FontAwesomeIcon
@@ -117,15 +185,14 @@ export default function UserDetail({ params }) {
       <div
         style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}
       >
-        {/* Cột trái: Đổi mật khẩu & Quota */}
         <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-          {/* Card Đổi mật khẩu */}
+          {/* Đổi mật khẩu */}
           <div
             style={{
               background: "white",
               padding: "24px",
               borderRadius: "12px",
-              border: "1px solid var(--border-color)",
+              border: "1px solid #e2e8f0",
             }}
           >
             <h3
@@ -137,33 +204,29 @@ export default function UserDetail({ params }) {
                 gap: "10px",
               }}
             >
-              <FontAwesomeIcon
-                icon={faKey}
-                style={{ color: "var(--primary)" }}
-              />
-              Đổi mật khẩu hệ thống
+              <FontAwesomeIcon icon={faKey} style={{ color: "#2563eb" }} /> Đổi
+              mật khẩu hệ thống
             </h3>
             <p
               style={{
                 fontSize: "14px",
-                color: "var(--text-secondary)",
+                color: "#64748b",
                 marginBottom: "15px",
               }}
             >
-              Người dùng: <strong>{id}</strong>
+              Đang thao tác user: <strong>{userIdOrName}</strong>
             </p>
             <input
               type="password"
-              placeholder="Mật khẩu mới cho Fastpanel..."
+              placeholder="Nhập mật khẩu mới..."
               value={newPass}
               onChange={(e) => setNewPass(e.target.value)}
               style={{
                 width: "100%",
                 padding: "12px",
                 marginBottom: "16px",
-                border: "1px solid var(--border-color)",
+                border: "1px solid #e2e8f0",
                 borderRadius: "8px",
-                outline: "none",
               }}
             />
             <button
@@ -171,14 +234,13 @@ export default function UserDetail({ params }) {
               disabled={status.loading || !newPass}
               style={{
                 width: "100%",
-                background: "var(--primary)",
+                background: "#2563eb",
                 color: "white",
                 padding: "12px",
                 borderRadius: "8px",
                 border: "none",
                 cursor: "pointer",
                 fontWeight: "600",
-                transition: "0.2s",
                 opacity: status.loading || !newPass ? 0.7 : 1,
               }}
             >
@@ -190,13 +252,13 @@ export default function UserDetail({ params }) {
             </button>
           </div>
 
-          {/* Card Quota */}
+          {/* Cấu hình Quota */}
           <div
             style={{
               background: "white",
               padding: "24px",
               borderRadius: "12px",
-              border: "1px solid var(--border-color)",
+              border: "1px solid #e2e8f0",
             }}
           >
             <h3
@@ -208,10 +270,7 @@ export default function UserDetail({ params }) {
                 gap: "10px",
               }}
             >
-              <FontAwesomeIcon
-                icon={faDatabase}
-                style={{ color: "var(--secondary)" }}
-              />
+              <FontAwesomeIcon icon={faDatabase} style={{ color: "#ea580c" }} />{" "}
               Cấu hình Quota
             </h3>
             <div style={{ display: "flex", gap: "10px", marginBottom: "16px" }}>
@@ -222,9 +281,8 @@ export default function UserDetail({ params }) {
                 style={{
                   flex: 1,
                   padding: "12px",
-                  border: "1px solid var(--border-color)",
+                  border: "1px solid #e2e8f0",
                   borderRadius: "8px",
-                  outline: "none",
                 }}
               />
               <span
@@ -242,7 +300,7 @@ export default function UserDetail({ params }) {
               disabled={status.loading}
               style={{
                 width: "100%",
-                background: "var(--secondary)",
+                background: "#ea580c",
                 color: "white",
                 padding: "12px",
                 borderRadius: "8px",
@@ -260,13 +318,13 @@ export default function UserDetail({ params }) {
           </div>
         </div>
 
-        {/* Cột phải: Trạng thái quyền truy cập */}
+        {/* Kiểm soát truy cập */}
         <div
           style={{
             background: "white",
             padding: "24px",
             borderRadius: "12px",
-            border: "1px solid var(--border-color)",
+            border: "1px solid #e2e8f0",
             height: "fit-content",
           }}
         >
@@ -279,21 +337,9 @@ export default function UserDetail({ params }) {
               gap: "10px",
             }}
           >
-            <FontAwesomeIcon icon={faUserSlash} style={{ color: "#dc2626" }} />
+            <FontAwesomeIcon icon={faUserSlash} style={{ color: "#dc2626" }} />{" "}
             Kiểm soát truy cập
           </h3>
-          <p
-            style={{
-              fontSize: "14px",
-              color: "var(--text-secondary)",
-              marginBottom: "20px",
-              lineHeight: "1.5",
-            }}
-          >
-            Thao tác này sẽ ảnh hưởng trực tiếp đến khả năng đăng nhập và sử
-            dụng tài nguyên của người dùng trên cụm máy chủ Fastpanel.
-          </p>
-
           <div style={{ display: "grid", gap: "12px" }}>
             <button
               onClick={() => handleUpdate("disable")}
@@ -310,7 +356,6 @@ export default function UserDetail({ params }) {
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "10px",
-                transition: "0.2s",
               }}
             >
               <FontAwesomeIcon icon={faUserSlash} /> Vô hiệu hóa người dùng
@@ -330,7 +375,6 @@ export default function UserDetail({ params }) {
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "10px",
-                transition: "0.2s",
               }}
             >
               <FontAwesomeIcon icon={faUserCheck} /> Kích hoạt lại tài khoản

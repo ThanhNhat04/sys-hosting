@@ -1,8 +1,8 @@
 const V1 = "/api/v1";
-const FASTPANEL = "/api/fastpanel";
+// const FASTPANEL = "/api/fastpanel";
 
 export const ENDPOINTS = {
-  //Backend Portal API
+  //Backend
   HEALTH: "/health",
   AUTH: { LOGIN: `${V1}/auth/login` },
   USERS: {
@@ -44,19 +44,35 @@ export const ENDPOINTS = {
     REPLIES: (id) => `${V1}/tickets/${id}/replies`,
     REPLY_ACTION: (id) => `${V1}/tickets/${id}/reply`,
   },
+
   // Fastpanel API
+  // ADMIN: {
+  //   SERVERS: {
+  //     BASE: `${FASTPANEL}/servers`,
+  //     RELOAD: `${FASTPANEL}/servers/reload`,
+  //   },
+  //   USERS: {
+  //     BASE: `${FASTPANEL}/users`,
+  //     ID: (id) => `${FASTPANEL}/users/${id}`,
+  //     CHPASS: (username) => `${FASTPANEL}/users/${username}/chpasswd`, // Theo ảnh API: /users/{username}/chpasswd
+  //     DISABLE: (id) => `${FASTPANEL}/users/${id}/disable`,
+  //     ENABLE: (id) => `${FASTPANEL}/users/${id}/enable`,
+  //     QUOTA: (id) => `${FASTPANEL}/users/${id}/quota`,
+  //   },
+  // },
+
   ADMIN: {
     SERVERS: {
-      BASE: `${FASTPANEL}/servers`,
-      RELOAD: `${FASTPANEL}/servers/reload`,
+      BASE: `/servers/`,
+      RELOAD: `/servers/reload`,
     },
     USERS: {
-      BASE: `${FASTPANEL}/users`,
-      ID: (id) => `${FASTPANEL}/users/${id}`,
-      CHPASS: (username) => `${FASTPANEL}/users/${username}/chpasswd`, 
-      DISABLE: (id) => `${FASTPANEL}/users/${id}/disable`,
-      ENABLE: (id) => `${FASTPANEL}/users/${id}/enable`,
-      QUOTA: (id) => `${FASTPANEL}/users/${id}/quota`,
+      BASE: `/users`,
+      ID: (id) => `/users/${id}`,
+      CHPASS: (username) => `/users/${username}/chpasswd`, // Theo ảnh API: /users/{username}/chpasswd
+      DISABLE: (id) => `/users/${id}/disable`,
+      ENABLE: (id) => `/users/${id}/enable`,
+      QUOTA: (id) => `/users/${id}/quota`,
     },
   },
 };
