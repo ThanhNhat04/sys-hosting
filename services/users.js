@@ -2,7 +2,7 @@
 import axiosClient from './axiosClient';
 import { ENDPOINTS } from './endpoints';
 
-export const userService = {  // BẮT BUỘC phải có chữ export ở đây
+export const userService = { 
   getMe: () => axiosClient.get(ENDPOINTS.USERS.ME),
   listUsers: () => axiosClient.get(ENDPOINTS.USERS.BASE),
   getUser: (id) => axiosClient.get(ENDPOINTS.USERS.ID(id)),

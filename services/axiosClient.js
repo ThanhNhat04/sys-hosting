@@ -54,4 +54,5 @@ const applyInterceptors = (instance, needsAuth = true) => {
 applyInterceptors(axiosClient, true);
 applyInterceptors(fastpanelClient, false);
 
-export default { axiosClient, fastpanelClient };
+// export default { axiosClient, fastpanelClient };
+export default axiosClient;

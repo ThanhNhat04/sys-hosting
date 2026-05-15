@@ -25,7 +25,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const response = await authService.login(email, password);
-      // console.log("Login successful:", response);
+      console.log("Login successful:", response);
       const token = response.data.accessToken || response.data.token;
       if (token) {
         localStorage.setItem("accessToken", token);
@@ -33,7 +33,8 @@ export default function LoginPage() {
         window.location.replace("/"); 
       }
     } catch (err) {
-      setError(typeof err === 'object' ? (err.detail || "Thông tin không chính xác") : err);
+      // setError(typeof err === 'object' ? (err.detail || "Thông tin không chính xác") : err);
+      console.error("Login failed:", err);
     } finally {
       setLoading(false);
     }
